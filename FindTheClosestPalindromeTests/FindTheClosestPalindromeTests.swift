@@ -28,11 +28,7 @@ struct Program {
         
         let mininumDifference = min(leftDifference, rightDifference)
         
-        if mininumDifference == leftDifference {
-           return leftPalindrome
-        } else {
-            return rightPalindrome
-        }
+        return mininumDifference == leftDifference ? leftPalindrome : rightPalindrome
     }
     
     private func findLeftSidePalindrome(number: Int) -> Int {

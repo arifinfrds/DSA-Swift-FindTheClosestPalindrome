@@ -24,7 +24,7 @@ struct Program {
 
 final class FindTheClosestPalindromeTests: XCTestCase {
 
-    func test_findLeftSidePalindrome_shouldFineLeftSide() {
+    func test_findLeftSidePalindrome_shouldFindLeftSide() {
         let sut = Program()
         
         let result = sut.findLeftSidePalindrome(text: "123")

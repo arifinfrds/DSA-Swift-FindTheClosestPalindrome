@@ -17,6 +17,24 @@ import XCTest
 @testable import FindTheClosestPalindrome
 
 struct Program {
+    
+    func nearestPalindromic(number: Int) -> Int {
+        
+        let leftPalindrome = findLeftSidePalindrome(number: number)
+        let rightPalindrome = findRightSidePalindrome(number: number)
+        
+        let leftDifference = abs(number - leftPalindrome)
+        let rightDifference = abs(number - rightPalindrome)
+        
+        let mininumDifference = min(leftDifference, rightDifference)
+        
+        if mininumDifference == leftDifference {
+           return leftPalindrome
+        } else {
+            return rightPalindrome
+        }
+    }
+    
     func findLeftSidePalindrome(number: Int) -> Int {
         
         var result: Int? = nil
@@ -55,28 +73,20 @@ private extension Int {
 }
 
 final class FindTheClosestPalindromeTests: XCTestCase {
-
-    func test_findLeftSidePalindrome_shouldFindLeftSide() {
+    
+    func test_nearestPalindromic_shouldFindNearestPalindrome() {
         let sut = Program()
         
-        let result = sut.findLeftSidePalindrome(number: 123)
+        let result = sut.nearestPalindromic(number: 123)
         
         XCTAssertEqual(result, 121)
     }
     
-    func test_findLeftSidePalindrome_shouldFindLeftSideOnSingleDigit() {
+    func test_nearestPalindromic_shouldFindLeftSideOnSingleDigit() {
         let sut = Program()
         
-        let result = sut.findLeftSidePalindrome(number: 1)
+        let result = sut.nearestPalindromic(number: 1)
         
         XCTAssertEqual(result, 0)
-    }
-    
-    func test_findRightSidePalindrome_shouldFindRightSide() {
-        let sut = Program()
-        
-        let result = sut.findRightSidePalindrome(number: 123)
-        
-        XCTAssertEqual(result, 131)
     }
 }

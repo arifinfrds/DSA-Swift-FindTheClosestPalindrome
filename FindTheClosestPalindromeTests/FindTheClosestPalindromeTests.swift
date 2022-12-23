@@ -31,6 +31,21 @@ struct Program {
         
         return result!
     }
+    
+    func findRightSidePalindrome(number: Int) -> Int {
+        
+        var result: Int? = nil
+        var currentNumber = number
+        
+        while result == nil {
+            if currentNumber.isPalindrome && currentNumber != number {
+                result = currentNumber
+            }
+            currentNumber += 1
+        }
+        
+        return result!
+    }
 }
 
 private extension Int {
@@ -55,5 +70,13 @@ final class FindTheClosestPalindromeTests: XCTestCase {
         let result = sut.findLeftSidePalindrome(number: 1)
         
         XCTAssertEqual(result, 0)
+    }
+    
+    func test_findRightSidePalindrome_shouldFindRightSide() {
+        let sut = Program()
+        
+        let result = sut.findRightSidePalindrome(number: 123)
+        
+        XCTAssertEqual(result, 131)
     }
 }

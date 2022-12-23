@@ -85,4 +85,12 @@ final class FindTheClosestPalindromeTests: XCTestCase {
         
         XCTAssertEqual(result, 0)
     }
+    
+    func test_nearestPalindromic_shouldFindNearestPalindromeOnTwoDigits() {
+        let sut = Program()
+        
+        let result = sut.nearestPalindromic(number: 56)
+        
+        XCTAssertEqual(result, 55)
+    }
 }

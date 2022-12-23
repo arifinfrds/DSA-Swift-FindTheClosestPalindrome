@@ -18,17 +18,23 @@ import XCTest
 
 struct Program {
     
-    func nearestPalindromic(number: Int) -> Int {
+    func nearestPalindromic(number: String) -> String {
         
-        let leftPalindrome = findLeftSidePalindrome(number: number)
-        let rightPalindrome = findRightSidePalindrome(number: number)
+        guard let n = Int(number) else {
+            return ""
+        }
         
-        let leftDifference = abs(number - leftPalindrome)
-        let rightDifference = abs(number - rightPalindrome)
+        let leftPalindrome = findLeftSidePalindrome(number: n)
+        let rightPalindrome = findRightSidePalindrome(number: n)
+        
+        let leftDifference = abs(n - leftPalindrome)
+        let rightDifference = abs(n - rightPalindrome)
         
         let mininumDifference = min(leftDifference, rightDifference)
         
-        return mininumDifference == leftDifference ? leftPalindrome : rightPalindrome
+        return mininumDifference == leftDifference
+        ? String(leftPalindrome)
+        : String(rightPalindrome)
     }
     
     private func findLeftSidePalindrome(number: Int) -> Int {
@@ -70,27 +76,36 @@ private extension Int {
 
 final class FindTheClosestPalindromeTests: XCTestCase {
     
+    func test_nearestPalindromic_shouldReturnEmptyOnEmptyStringNumber() {
+        let sut = Program()
+        
+        let result = sut.nearestPalindromic(number: "")
+        
+        XCTAssertEqual(result, "")
+    }
+    
+    
     func test_nearestPalindromic_shouldFindNearestPalindromeOnThreeDigits() {
         let sut = Program()
         
-        let result = sut.nearestPalindromic(number: 123)
+        let result = sut.nearestPalindromic(number: "123")
         
-        XCTAssertEqual(result, 121)
+        XCTAssertEqual(result, "121")
     }
     
     func test_nearestPalindromic_shouldFindNearestPalindromeOnSingleDigit() {
         let sut = Program()
         
-        let result = sut.nearestPalindromic(number: 1)
+        let result = sut.nearestPalindromic(number: "1")
         
-        XCTAssertEqual(result, 0)
+        XCTAssertEqual(result, "0")
     }
     
     func test_nearestPalindromic_shouldFindNearestPalindromeOnTwoDigits() {
         let sut = Program()
         
-        let result = sut.nearestPalindromic(number: 56)
+        let result = sut.nearestPalindromic(number: "56")
         
-        XCTAssertEqual(result, 55)
+        XCTAssertEqual(result, "55")
     }
 }

@@ -70,7 +70,7 @@ private extension Int {
 
 final class FindTheClosestPalindromeTests: XCTestCase {
     
-    func test_nearestPalindromic_shouldFindNearestPalindrome() {
+    func test_nearestPalindromic_shouldFindNearestPalindromeOnThreeDigits() {
         let sut = Program()
         
         let result = sut.nearestPalindromic(number: 123)
@@ -78,7 +78,7 @@ final class FindTheClosestPalindromeTests: XCTestCase {
         XCTAssertEqual(result, 121)
     }
     
-    func test_nearestPalindromic_shouldFindLeftSideOnSingleDigit() {
+    func test_nearestPalindromic_shouldFindNearestPalindromeOnSingleDigit() {
         let sut = Program()
         
         let result = sut.nearestPalindromic(number: 1)

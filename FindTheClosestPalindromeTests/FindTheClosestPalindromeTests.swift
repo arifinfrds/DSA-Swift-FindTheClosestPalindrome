@@ -35,7 +35,7 @@ struct Program {
         }
     }
     
-    func findLeftSidePalindrome(number: Int) -> Int {
+    private func findLeftSidePalindrome(number: Int) -> Int {
         
         var result: Int? = nil
         var currentNumber = number
@@ -50,7 +50,7 @@ struct Program {
         return result!
     }
     
-    func findRightSidePalindrome(number: Int) -> Int {
+    private func findRightSidePalindrome(number: Int) -> Int {
         
         var result: Int? = nil
         var currentNumber = number
